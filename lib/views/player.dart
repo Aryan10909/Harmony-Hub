@@ -19,7 +19,7 @@ class Player extends StatelessWidget {
                 child: Container(
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.green,
+                color: Colors.yellow,
               ),
               alignment: Alignment.center,
               child: const Icon(Icons.music_note),

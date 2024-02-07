@@ -19,12 +19,12 @@ class Home extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon:const  Icon(
                   Icons.search,
                   color: whiteColor,
                 ))
           ],
-          leading: Icon(
+          leading: const Icon(
             Icons.sort_rounded,
             color: whiteColor,
           ),
@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
               uriType: UriType.EXTERNAL),
           builder: (BuildContext context, snapshot) {
             if (snapshot.data == null) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (snapshot.data!.isEmpty) {
@@ -59,7 +59,7 @@ class Home extends StatelessWidget {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                        margin: EdgeInsets.only(bottom: 4),
+                        margin: const EdgeInsets.only(bottom: 4),
                         child: Obx(
                           () => ListTile(
                             shape: RoundedRectangleBorder(
@@ -85,8 +85,10 @@ class Home extends StatelessWidget {
                                     color: whiteColor, size: 26)
                                 : null,
                             onTap: () {
-                              Get.to(() => const Player());
-                              // controller.playSong(snapshot.data![index].uri, index);
+                              Get.to(() => Player(data: snapshot.data!),
+                                  transition: Transition.downToUp);
+                              controller.playSong(
+                                  snapshot.data![index].uri, index);
                             },
                           ),
                         ));
